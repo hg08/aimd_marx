@@ -50,7 +50,7 @@ Parrinello方法总是跑赢传统的"三步"方法.　相反，如果对于给�
 
 ## 2. 基本技术: 理论
 ### 2.1 经典分子动力学的推导
-我们讨论的起点为非相对论量子力学中坐标表象下的依赖于时间的Schrodinger方程:
+​	我们讨论的起点为非相对论量子力学中坐标表象下的依赖于时间的Schrodinger方程:
 $$
 i\hbar\frac{\partial}{\partial t}\Phi(\{r_i\},\{R_i\}; t) = H\Phi(\{r_i\},\{R_i\}; t)
 $$
@@ -61,7 +61,9 @@ $$
 $$
 上式中,$\{r_i\}$描述电子的坐标, $\{R_I\}$描述原子核的坐标. 下面我们要引入更加方便的原子单位. 因此,只有电子-电子,电子- 核,核-核Coulomb相互作用才被考虑.
 
-本节的目的是推导经典分子动力学. 我们将从Shrodinger's波动方程出发,并追随Tully绝妙的思路. 
+
+
+​	本节的目的是推导经典分子动力学. 我们将从Shrodinger's波动方程出发,并追随Tully绝妙的思路. 
 为了这个目的, 我们必须将依赖于电子 和原子核的坐标的总波函数$\Phi(\{r_i\},\{R_i\}; t)$的电子部分和原子核部分分开. 在各种可能的形式中,最简单的就是乘积拟设:
 $$
 \begin{eqnarray}\Phi(\{r_i\},\{R_i\};t)\approx \Psi(\{r_i\};t)\chi(\{R_i\};t) \text{exp}[\frac{i}{\hbar}\int_{t_0}^t dt' \tilde E_e(t')],\end{eqnarray}
@@ -81,7 +83,7 @@ $$
 
 
 
-将分离拟设$(3)$ 代入方程$(1)$, 左乘$\langle \Psi|$ 和$\langle \chi|$于其上，同时考虑能量守恒条件$d\langle H\rangle / dt \equiv0$,得如下关系
+​	将分离拟设$(3)$ 代入方程$(1)$, 左乘$\langle \Psi|$ 和$\langle \chi|$于其上，同时考虑能量守恒条件$d\langle H\rangle / dt \equiv0$,得如下关系
 $$
 \begin{eqnarray}
 i\hbar\frac{\partial \Psi}{\partial t} &=& - \sum_i \frac{\hbar^2}{2m_e}\nabla_i^2 \Psi + \{\int dR \chi^*(\{R_I\};t)V_{n-e}(\{r_i\},\{R_I\};t) \chi(\{R_I\};t) \} \Psi \\
@@ -90,3 +92,48 @@ i\hbar\frac{\partial \Psi}{\partial t} &=& - \sum_i \frac{\hbar^2}{2M_I}\nabla_i
 $$
 
 这个由狄拉克于1930年得到的耦合方程组，就是依赖于时间的自洽场方法的基础．[158,162]　电子和核都按照量子力学规律在依赖于时间的有效势(或自洽平均场)中运动．电子所处的有效势(或自洽平均场)由对核之自由度的量子力学平均值而求得(利用核之波函数)；而核所处的有效势(或自洽平均场)由对电子之自由度的量子力学平均值而求得(利用电子之波函数)．　故，正如我们已经预料到的,　单行列式拟设$(3)$产生耦合核--电子耦合量子动力学的一个平均场描述.　这就是电子之变量和核之变量的这种最简可能分离(方程$(3)$)所必须付出的代价．
+
+
+
+<img src="https://github.com/hg08/tututu/blob/master/basic_structure_of_face.png?raw=true" width="700"> 
+
+​	推导经典分子动力学的下一步是将原子核近似为经典点粒子．给定描述所有原子核的一个量子力学波动方程(说的是方程$(7)$吗？)，在TDSCF框架下如何才能实现这个目标呢？　通常，从量子力学中提取经典力学的一个著名的路线(route)是: 首先，以实振幅因子$A$和实相位因子$S$来重写相应的波函数
+$$
+\chi(\{R_I\};t) = A(\{R_I\};t)\text{exp}[iS(\{R_I\};t)/\hbar],
+$$
+ 在这个极坐标表示中，$A>0$ [163,425,535]. 适当地(accordingly)变换方程$(7)$中的核波函数，并分离实部和虚部以后，原子核的依赖于时间的自洽场方程重新以新变量$A$和$S$精确地表示出来：
+$$
+\begin{eqnarray}
+&&\frac{\partial S}{\partial t} + \sum_I \frac{1}{2M_I}(\nabla_I S)^2 + \int \Psi^* H_e \Psi = \hbar^2 \sum_I \frac{1}{2M_I}\frac{\nabla_I^2 A}{A}\\
+&&\frac{\partial A}{\partial t} + \sum_I \frac{1}{M_I}(\nabla_I A)(\nabla_I S) + \sum_I \frac{1}{2M_I}A(\nabla_I^2 S) = 0 
+\end{eqnarray}
+$$
+实际上，这个所谓的＂量子流体动力学表示＂可以用来解决依赖于时间的薛定谔方程[160]． 借助于核密度的恒等式$|\chi|^2 \equiv A^2$ (由方程$(8)$的定义可得),　变量$A$满足的关系，方程$(10)$, 可以重新写成一个连续方程[163,425,535]．这个连续方程与$\hbar$无关，且保证了与原子核有关的粒子概率$|\chi|^2$局域地守恒， 当有通量(flux)存在时．
+
+​	下面更细致的讨论方程$(9)$,$S$满足的关系． 这个方程中有一项依赖于$\hbar$, 取经典极限$\hbar \to 0$, 这项消失：
+$$
+\frac{\partial S}{\partial t} + \sum_I \frac{1}{2M_I}(\nabla_I S)^2 + \int \Psi^* H_e \Psi =0
+$$
+
+an expansion in terms of $\hbar$  would lead to a hierarchy of semi-classical methods. [425, 259] 现在，我们所得方程
+$$
+\frac{\partial S}{\partial t} + H(\{R_I\},\{\nabla_I S\}) = 0
+$$
+与Hamilton-Jacobi框架下的经典力学运动方程是同构的！经典Hamilton函数
+$$
+H(\{R_I\},\{P_I\}) = T(\{P_I\}) + V(\{R_I\})
+$$
+由广义坐标$\{R_I\}$和它的共轭动量$\{P_I\}$定义．　借助于变换
+$$
+P_I \equiv \nabla_I S,
+$$
+与方程$(11)$相应的牛顿运动方程$\dot P_I = -\nabla_I V(\{R_I\})$就可以读出，如下：
+$$
+\begin{eqnarray}
+\frac{dP_I}{dt} &=& -\nabla_I \int dr \Psi^* H_e \Psi,\text{or} \nonumber \\
+M_I \frac{dR_I}{dt} &=& -\nabla_I \int dr \Psi^* H_e \Psi \nonumber \\
+&=& -\nabla_I V_e^E(\{R_I(t)\}).
+\end{eqnarray}
+$$
+
+因此，原子核在所有电子产出的有效势$V_e^E$ 中按经典力学运动．
