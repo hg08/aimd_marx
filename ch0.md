@@ -131,9 +131,24 @@ $$
 $$
 \begin{eqnarray}
 \frac{dP_I}{dt} &=& -\nabla_I \int dr \Psi^* H_e \Psi,\text{or} \nonumber \\
-M_I \frac{dR_I}{dt} &=& -\nabla_I \int dr \Psi^* H_e \Psi \nonumber \\
+M_I \frac{dR_I}{dt} &=& -\nabla_I \int dr \Psi^* H_e \Psi \\
 &=& -\nabla_I V_e^E(\{R_I(t)\}).
 \end{eqnarray}
 $$
 
-因此，原子核在所有电子产出的有效势$V_e^E$ 中按经典力学运动．
+因此，原子核在所有电子产出的有效势$V_e^E$ 中按经典力学运动． 这个有效势仅仅是$t$时刻所有原子核位置的函数.　这些原子核的位置通过$H_e$对电子自由度求平均，即在保持原子核位置固定在其瞬时值$\{R_I(t)\}$之时计算$H_e$的量子力学平均$\langle \Psi|H_e | \Psi\rangle$. 　
+
+​	然而，原子核波函数still occurs in the TDSCF方程for the 电子自由度，并且，为了方便，我们不得不用原子核位置来取代原子核波函数．在这种情形，经典还原能够实现，通过在$\hbar \to 0$极限用一个$\delta$函数之乘积$\prod_I \delta(R_I-R_I(t))$取代方程$(6)$中的原子核密度$|\chi(\{R_I\};t)|$　（这些$\delta$函数之中心位于经典原子核的瞬时位置$\{R_I(t)\}$，正如方程$(15)$给出）.　这种取代给出了required平均值：
+$$
+\int dR \chi^*(\{R_I\};t) R_I \chi(\{R_I\};t)    \stackrel{\hbar \to 0}{\longrightarrow} R_I(t).
+$$
+这个经典极限导致依赖于时间的电子波函数
+$$
+\begin{eqnarray}
+i\hbar\frac{\partial \Psi}{\partial t} & = & - \sum_i \frac{\hbar}{2m_e}\nabla_i^2 \Psi + V_{n-e}(\{r_i\},\{R_I(t)\})\Psi \nonumber\\
+& = & H_e(\{r_i\},\{R_I(t)\})\Psi (\{r_i\},\{R_I(t)\};t),
+\end{eqnarray}
+$$
+
+随着经典原子核通过方程$(15)$传播，该电子波函数自洽地演化．注意，此时$H_e$ 依赖于原子核位置$\{\R_I(t)\}$的方式是：$\{\R_I(t)\}$ 作为$V_{n-e}(\{r_i\},\{ \R_I(t)\})$的参数，进而$\Psi$也以同样的方式依赖于$\{\R_I(t)\}$. 这意味着无论是经典自由度对量子自由度的反馈，还是量子自由度对经典自由度的反馈都被合并了起来．(at variance with (与...不一致) the "classical path" or Mott non-SCF approach to dynamics.[650,651])
+
